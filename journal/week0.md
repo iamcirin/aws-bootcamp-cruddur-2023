@@ -6,6 +6,8 @@
 ### Installing aws cli:
 ![aws_cli](assets/AWS_cli.png)
 
+![aws_cli](assets/aws_cli2.png)
+
 ### Using AWS CloudShell:
 ![aws_cloudshell](assets/aws_CloudShell.png)
 
