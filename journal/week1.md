@@ -43,3 +43,8 @@ remarque: the port on .env.example (backend-flask folder) was set to 3001 so I h
   - ran the images locally
 
 ![](assets/week1/run-containers-locally.png)
+
+
+## Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
+
+![](assets/week1/launch-ec2-pull-docker-image.png)
