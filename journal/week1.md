@@ -49,6 +49,10 @@ remarque: the port on .env.example (backend-flask folder) was set to 3001 so I h
 
 ![](assets/week1/launch-ec2-pull-docker-image.png)
 
+## Create a notification endpoint for the OpenAI Document
+
+![](assets/week1/Notification-Endpoint-for-theOpenAI%20Document.png)
+
 ## Create Notifications backend endpoint
 
 ![](assets/week1/notifications-backend-endpoint.png)
