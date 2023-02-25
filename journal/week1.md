@@ -48,3 +48,13 @@ remarque: the port on .env.example (backend-flask folder) was set to 3001 so I h
 ## Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
 
 ![](assets/week1/launch-ec2-pull-docker-image.png)
+
+## Create Notifications backend endpoint
+
+![](assets/week1/notifications-backend-endpoint.png)
+
+## Create notifications frontend
+remarque: even though I followed the instructions mentioned in the video the notifictaion elemnt in the web page didn't appear until I commented the variable that holds the component and instead put the component as shown in the image
+
+![](assets/week1/frontend-notification.png)
+
