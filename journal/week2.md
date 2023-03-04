@@ -12,7 +12,7 @@
 
 ![](assets/week2/traces2.png)
 
-### Add instruments to display day on console:
+### Add instruments to display data on console:
 
 ![](assets/week2/console.png)
 
@@ -36,6 +36,51 @@
 ![](assets/week2/xray-data3.png)
 
 ### Configure the X-RAY segment and subsegment for "notifications-activities.py"
+```
+# added for x-eay segment
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.core import patch_all
+from datetime import datetime, timedelta, timezone
+patch_all()
+
+
+# added for x-eay segment
+xray_recorder.begin_segment('notification-activities')
+
+class NotificationsActivities:
+  def run():
+  # added this line for x-ray segment
+  with xray_recorder.in_subsegment('notification-activities-subsegment'):
+    now = datetime.now(timezone.utc).astimezone()
+    results = [{
+      'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+      'handle':  'Channel',
+      'message': 'Cloud is fun!',
+      'created_at': (now - timedelta(days=2)).isoformat(),
+      'expires_at': (now + timedelta(days=5)).isoformat(),
+      'likes_count': 5,
+      'replies_count': 1,
+      'reposts_count': 0,
+      'replies': [{
+        'uuid': '26e12864-1c26-5c3a-9658-97a10f8fea67',
+        'reply_to_activity_uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
+        'handle':  'Worf',
+        'message': 'This post has no honor!',
+        'likes_count': 0,
+        'replies_count': 0,
+        'reposts_count': 0,
+        'created_at': (now - timedelta(days=2)).isoformat()
+      }],
+    }
+    ]
+    xray_recorder.put_metadata('results', len(results))
+    xray_recorder.put_annotation('handle', results[0]['handle'])
+    xray_recorder.end_subsegment()
+    return results
+
+
+xray_recorder.end_segment()
+```
 
 
 ![](assets/week2/xray-notifications1.png)
@@ -114,6 +159,8 @@
 ```
 
 	### Configure custom logger to send to CloudWatch Logs
+	
+	note: implementing the code for CloudWatch Logs, through an error in the implementaion of the x-ray segment and subsegment of the "notifications-activities", for one of them to work I had to comment the code lines of the other.
 
 ![](assets/week2/cloudwatch1.png)
 ![](assets/week2/cloudwatch2.png)
