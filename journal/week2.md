@@ -166,3 +166,8 @@ xray_recorder.end_segment()
 ![](assets/week2/cloudwatch1.png)
 ![](assets/week2/cloudwatch2.png)
 
+
+### implementing rollbar:
+
+![](assets/week2/rollbar.png)
+
