@@ -3,15 +3,20 @@
 # from aws_xray_sdk.core import patch_all
 from datetime import datetime, timedelta, timezone
 # patch_all()
+from opentelemetry import trace
 
 
 # added for x-ray segment
 # xray_recorder.begin_segment('notification-activities')
 
+tracer = trace.get_tracer("notifications.activities")
+
 class NotificationsActivities:
   def run():
   # added this line for x-ray sbsegment
     # with xray_recorder.in_subsegment('notification-activities-subsegment'):
+    with tracer.start_as_current_span("notifications-activities-mock-data"):
+      span = trace.get_current_span()
       now = datetime.now(timezone.utc).astimezone()
       results = [{
         'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
@@ -37,6 +42,8 @@ class NotificationsActivities:
       # xray_recorder.put_metadata('results', len(results))
       # xray_recorder.put_annotation('handle', results[0]['handle'])
       # xray_recorder.end_subsegment()
+      span.set_attribute("user-id", results[0]['uuid'])
+      span.set_attribute("handle", results[0]['handle'])
       return results
 
 
