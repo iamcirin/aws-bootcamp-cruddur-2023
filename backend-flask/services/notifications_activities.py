@@ -5,12 +5,12 @@ from datetime import datetime, timedelta, timezone
 patch_all()
 
 
-# added for x-eay segment
+# added for x-ray segment
 xray_recorder.begin_segment('notification-activities')
 
 class NotificationsActivities:
   def run():
-    # added this line for x-ray segment
+  # added this line for x-ray sbsegment
     with xray_recorder.in_subsegment('notification-activities-subsegment'):
       now = datetime.now(timezone.utc).astimezone()
       results = [{
@@ -36,6 +36,7 @@ class NotificationsActivities:
       ]
       xray_recorder.put_metadata('results', len(results))
       xray_recorder.put_annotation('handle', results[0]['handle'])
+      xray_recorder.end_subsegment()
       return results
 
 
