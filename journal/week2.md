@@ -171,3 +171,12 @@ xray_recorder.end_segment()
 
 ![](assets/week2/rollbar.png)
 
+## Challenge Homework:
+
+### Add custom instrumentation to Honeycomb to add more attributes eg. UserId, Add a custom span
+
+- I created a notifications-activities-mock-data span
+- added 2 attributes (user-id, handle)
+
+![](assets/week2/custom-span.png)
+
