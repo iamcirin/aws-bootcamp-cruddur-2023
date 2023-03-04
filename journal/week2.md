@@ -180,3 +180,6 @@ xray_recorder.end_segment()
 
 ![](assets/week2/custom-span.png)
 
+### Run custom queries in Honeycomb and save them later eg. Latency by UserID, Recent Traces
+![](assets/week2/custom-query.png)
+
