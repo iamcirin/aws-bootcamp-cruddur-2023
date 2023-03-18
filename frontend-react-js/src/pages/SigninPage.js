@@ -12,12 +12,14 @@ export default function SigninPage() {
   const [password, setPassword] = React.useState('');
   const [errors, setErrors] = React.useState('');
 
-const onsubmit = async (event) => {
+const onsubmit =(event) => {
   setErrors('')
   event.preventDefault();
+  console.log(email, password)
 
     Auth.signIn(email, password)
       .then(user => {
+        console.log(user)
         localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
         window.location.href = "/"
       })
