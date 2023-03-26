@@ -175,7 +175,7 @@ def data_home():
     # app.logger.debug(cognito_user_id=claims['username'])
 
 
-    data = HomeActivities.run(claims['username'])
+    data = HomeActivities.run(cognito_user_id=claims['username'])
 
   except TokenVerifyError as e:
 
